@@ -1,0 +1,133 @@
+body {
+    background-color: #2a2a2a;
+    color: gray;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: none;
+    height: 100%;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    justify-content: center;
+    display: block;
+    
+}
+
+.CreatorDetails {
+    font-size: 1rem;
+    backdrop-filter: blur(20px);
+    background-color: #2a2a2ac4;
+    border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 1px 1px, rgb(0 0 0 / 7%) 0px 2px 4px, rgb(0 0 0 / 7%) 0px 4px 8px, rgb(0 0 0 / 7%) 0px 8px 16px, rgb(0 0 0 / 7%) 0px 16px 32px, rgb(0 0 0 / 7%) 0px 32px 64px;
+    /* margin: 0 auto 25px; */
+    margin: auto;
+    margin-top: 20em;
+    padding: 30px 0px;
+    /* width: 200px; */
+    /* display: inline-block; */
+    /* margin: 19px 20px 0px 0px; */
+    /* padding: 40px 30px; */
+    width: 250px;
+    /* box-sizing: border-box; */
+}
+
+.CreatorDetails::before {
+    background: rgb(42, 42, 42);
+    border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 1px 1px inset, rgb(0 0 0 / 7%) 0px 2px 4px inset, rgb(0 0 0 / 7%) 0px 4px 8px inset, rgb(0 0 0 / 7%) 0px 8px 16px inset, rgb(0 0 0 / 7%) 0px 16px 32px inset, rgb(0 0 0 / 7%) 0px 32px 64px inset;
+    content: "";
+    height: 7px;
+    left: 50%;
+    top: 12px;
+    transform: translateX(-50%);
+    width: 30px;
+}
+
+.Avatar {
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 25%) 0px 1px 1px, rgb(0 0 0 / 7%) 0px 2px 4px, rgb(0 0 0 / 7%) 0px 4px 8px, rgb(0 0 0 / 7%) 0px 8px 16px, rgb(0 0 0 / 7%) 0px 16px 32px, rgb(0 0 0 / 7%) 0px 32px 64px;
+    display: block;
+    height: 100px;
+    margin: 0px auto 10px;
+    width: 100px;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+    box-sizing: border-box;
+    display: block;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+p {
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+
+.CreatorContact .Button {
+    color: gray;
+    text-decoration: none;
+    padding: 6px 8px 7px;
+    background-color: #333333;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 1px 1px, rgb(0 0 0 / 7%) 0px 2px 4px, rgb(0 0 0 / 7%) 0px 4px 8px, rgb(0 0 0 / 7%) 0px 8px 16px, rgb(0 0 0 / 7%) 0px 16px 32px, rgb(0 0 0 / 7%) 0px 32px 64px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 8px 7px;
+    text-transform: uppercase;
+    user-select: none;
+    vertical-align: middle;
+}
+
+.CreatorContact {
+    text-decoration: none;
+    display: inline-block;
+}
+
+footer {
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+}
+
+.CreatorBadge{
+    padding-top: 50%;
+    background-color: red;
+}
+
+.logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
