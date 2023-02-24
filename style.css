@@ -1,133 +1,178 @@
 body {
-    background-color: #2a2a2a;
-    color: gray;
+
+    /* Fonts */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    overscroll-behavior-x: none;
-    overscroll-behavior-y: none;
-    height: 100%;
+
+    /* Design */
+    animation: animateBg 10s linear infinite;
+    background-image: linear-gradient(0deg, #cf5c5c, #c19b4a, #def2a0, #c6ee4a, #42eca6, #64b3d9, #208ea2, #498ada, #5b73df, #897ed3, #cf5c5c, #c19b4a);
+    background-size: 100% 1100%;
+
+    color: gray;
+
+    /* Shape */
     margin: 0;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    justify-content: center;
-    display: block;
-    
+
 }
 
-.CreatorDetails {
-    font-size: 1rem;
+@keyframes animateBg {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+.logo {
+
+    /* Fonts */
+    font-size: 24px;
+    font-weight: bold;
+
+    /* Position */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+
+}
+
+.material-symbols-outlined {
+
+    /* Fonts */
+    font-size: 24px;
+    font-weight: bold;
+
+    /* Position */
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+
+    /* font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48 */
+}
+
+.container {
+
+    /* Position */
+    display: flex;
+    /* margin-left: 5vh; */
+    justify-content: center;
+    align-items: center;
+    /* Shape */
+    height: 100vh;
+}
+
+.square {
+    
     backdrop-filter: blur(20px);
     background-color: #2a2a2ac4;
     border-radius: 5px;
     box-shadow: rgb(0 0 0 / 25%) 0px 1px 1px, rgb(0 0 0 / 7%) 0px 2px 4px, rgb(0 0 0 / 7%) 0px 4px 8px, rgb(0 0 0 / 7%) 0px 8px 16px, rgb(0 0 0 / 7%) 0px 16px 32px, rgb(0 0 0 / 7%) 0px 32px 64px;
-    /* margin: 0 auto 25px; */
-    margin: auto;
-    margin-top: 20em;
-    padding: 30px 0px;
-    /* width: 200px; */
-    /* display: inline-block; */
-    /* margin: 19px 20px 0px 0px; */
-    /* padding: 40px 30px; */
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    padding: 40px 30px;
     width: 250px;
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
+    top: 15px;
+
 }
 
-.CreatorDetails::before {
-    background: rgb(42, 42, 42);
+.square::before {
+    background: rgba(42, 42, 42);
     border-radius: 5px;
     box-shadow: rgb(0 0 0 / 25%) 0px 1px 1px inset, rgb(0 0 0 / 7%) 0px 2px 4px inset, rgb(0 0 0 / 7%) 0px 4px 8px inset, rgb(0 0 0 / 7%) 0px 8px 16px inset, rgb(0 0 0 / 7%) 0px 16px 32px inset, rgb(0 0 0 / 7%) 0px 32px 64px inset;
     content: "";
     height: 7px;
     left: 50%;
+    position: absolute;
     top: 12px;
     transform: translateX(-50%);
     width: 30px;
 }
 
-.Avatar {
+.avatar {
+
+    /* Position */
+    /* margin-top: 40px; */
+    /* Design */
     border-radius: 50%;
     box-shadow: rgb(0 0 0 / 25%) 0px 1px 1px, rgb(0 0 0 / 7%) 0px 2px 4px, rgb(0 0 0 / 7%) 0px 4px 8px, rgb(0 0 0 / 7%) 0px 8px 16px, rgb(0 0 0 / 7%) 0px 16px 32px, rgb(0 0 0 / 7%) 0px 32px 64px;
-    display: block;
+    /* size */
     height: 100px;
-    margin: 0px auto 10px;
     width: 100px;
+
 }
 
-img {
-    vertical-align: middle;
-    border-style: none;
-    overflow-clip-margin: content-box;
-    overflow: clip;
-}
+.title {
 
-h2 {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0;
-    line-height: 1.2;
-    box-sizing: border-box;
-    display: block;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-
-p {
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-
-
-.CreatorContact .Button {
+    /* Fonts */
+    margin-top: 10px;
     color: gray;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.job {
+    font-weight: bold;
+    color: gray;
+}
+
+.contact {
+    margin-top: 20px;
     text-decoration: none;
-    padding: 6px 8px 7px;
     background-color: #333333;
-    font-weight: 500;
     text-transform: uppercase;
     border-radius: 5px;
     box-shadow: rgb(0 0 0 / 25%) 0px 1px 1px, rgb(0 0 0 / 7%) 0px 2px 4px, rgb(0 0 0 / 7%) 0px 4px 8px, rgb(0 0 0 / 7%) 0px 8px 16px, rgb(0 0 0 / 7%) 0px 16px 32px, rgb(0 0 0 / 7%) 0px 32px 64px;
+    color: gray;
     display: inline-block;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: bold;
     padding: 6px 8px 7px;
-    text-transform: uppercase;
-    user-select: none;
-    vertical-align: middle;
+
 }
 
-.CreatorContact {
-    text-decoration: none;
-    display: inline-block;
+em {
+    font-family: 'Consolas';
+    font-size: 80px;
+    display: inline;
+    font-style: normal !important;
+    font-weight: inherit !important;
+    /* background-image: linear-gradient(90deg,#7209d4,#2832d4 33%,#00a5b2); */
+    background-image: linear-gradient(90deg, #7209d4, #2832d4 33%, #00a5b2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 footer {
+
+    /* Position */
     text-align: center;
     position: fixed;
     left: 0;
     bottom: 0;
+
+    /* Shape */
     width: 100%;
 
 }
 
-.CreatorBadge{
-    padding-top: 50%;
-    background-color: red;
-}
+/* Media query to add a breakpoint at 800px: */
+@media screen and (max-width: 800px) {
 
-.logo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 10px;
-    font-size: 24px;
-    font-weight: bold;
+    .left,
+    .main,
+    .right {
+        width: 100%;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
 }
