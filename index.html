@@ -54,7 +54,6 @@
 
 </html> --> -->
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -112,6 +111,7 @@
         }
 
         .hero-section {
+            background: url('https://images.unsplash.com/photo-1594715350395-0980fe6cab1f?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -120,7 +120,6 @@
             position: relative;
             overflow: hidden;
             margin-top: 60px;
-            /* Adjusted for fixed header */
         }
 
         .hero-section .video-container {
@@ -275,107 +274,115 @@
         .timeline-item .timeline-date {
             font-size: var(--body-font-size);
             font-weight: bold;
-            margin: 0 20px;
-            color: var(--primary-color);
-        }
 
-        .timeline-item img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-            background-color: var(--surface-color);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        form input,
-        form textarea {
-            padding: 15px;
-            font-size: var(--body-font-size);
-            width: 100%;
-            max-width: 600px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-
-        form button {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 500;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        form button:hover {
-            background-color: var(--button-hover-color);
-        }
-
-        footer {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            padding: 20px;
-            text-align: center;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            section h2 {
-                font-size: 1.5rem;
-            }
-
-            .quote-section p {
-                font-size: 1.25rem;
-            }
-
-            .video-section iframe {
-                height: 300px;
-            }
-
-            .timeline-item {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .timeline-item:nth-child(even) {
-                flex-direction: column;
+            margin .timeline-item .timeline-date {
+                font-size: var(--body-font-size);
+                font-weight: bold;
+                margin: 0 20px;
+                color: var(--primary-color);
             }
 
             .timeline-item img {
-                margin-bottom: 20px;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+                background-color: var(--surface-color);
+                padding: 20px;
+                border-radius: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
 
             form input,
             form textarea {
-                max-width: 100%;
+                padding: 15px;
+                font-size: var(--body-font-size);
+                width: 100%;
+                max-width: 600px;
+                border-radius: 10px;
+                border: 1px solid #ccc;
+                background-color: var(--background-color);
+                color: var(--text-color);
             }
-        }
+
+            form button {
+                background-color: var(--primary-color);
+                color: var(--text-color);
+                padding: 15px 30px;
+                border: none;
+                border-radius: 50px;
+                font-weight: 500;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            form button:hover {
+                background-color: var(--button-hover-color);
+            }
+
+            footer {
+                background-color: var(--background-color);
+                color: var(--text-color);
+                padding: 20px;
+                text-align: center;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @media (max-width: 768px) {
+                header h1 {
+                    font-size: 2rem;
+                }
+
+                header nav a {
+                    font-size: 0.875rem;
+                }
+
+                section h2 {
+                    font-size: 1.5rem;
+                }
+
+                .quote-section p {
+                    font-size: 1.25rem;
+                }
+
+                .video-section iframe {
+                    height: 300px;
+                }
+
+                .timeline-item {
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                .timeline-item:nth-child(even) {
+                    flex-direction: column;
+                }
+
+                .timeline-item img {
+                    margin-bottom: 20px;
+                }
+
+                form input,
+                form textarea {
+                    max-width: 100%;
+                }
+            }
     </style>
 </head>
 
@@ -395,15 +402,13 @@
     <section class="hero-section" id="home">
         <div class="video-container">
             <video autoplay muted loop>
-                <source
-                    src="C:\Users\jinn\Downloads\Video\A short animation about what love is [ Love is in small things- Collection ].mp4"
-                    type="video/mp4">
+                <source src="https://www.youtube.com/embed/xdHx1YEsWwk?si=nsoBbWtyoeotmlKD">
 
             </video>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/xdHx1YEsWwk?si=nsoBbWtyoeotmlKD"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/xdHx1YEsWwk?si=nsoBbWtyoeotmlKD"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
         </div>
         <div class="hero-content" data-aos="fade-up">
             <h1>Umair & Uzma</h1>
@@ -468,10 +473,9 @@
                     <div class="timeline-date">14 Feb 2021</div>
                     <div class="timeline-content">
                         <h3>Engagement</h3>
-                        <p>We haven't been engadged yet but soon.</p>
+                        <p>We haven't been engaged yet but soon.</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
