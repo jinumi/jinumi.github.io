@@ -57,135 +57,432 @@
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>three.js webgl - animation - keyframes</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
-		<style>
-			body {
-				background-color: #bfe3dd;
-				color: #000;
-			}
 
-			a {
-				color: #2983ff;
-			}
-		</style>
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🩷 Umair & Uzma</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #f50057;
+            --background-color: #121212;
+            --surface-color: #1e1e1e;
+            --text-color: #ffffff;
+            --accent-color: #ff80ab;
+            --button-hover-color: #c51162;
+            --header-font-size: 2.5rem;
+            --subheader-font-size: 1.75rem;
+            --body-font-size: 1.125rem;
+        }
 
-	<body>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
 
-		<div id="container"></div>
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
 
-		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webgl - animation - keyframes<br/>
-			Model: <a href="https://artstation.com/artwork/1AGwX" target="_blank" rel="noopener">Littlest Tokyo</a> by
-			<a href="https://artstation.com/glenatron" target="_blank" rel="noopener">Glen Fox</a>, CC Attribution.
-		</div>
+        header img {
+            height: 40px;
+        }
 
-		<script type="importmap">
-			{
-				"imports": {
-					"three": "../build/three.module.js",
-					"three/addons/": "./jsm/"
-				}
-			}
-		</script>
+        header nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: var(--body-font-size);
+        }
 
-		<script type="module">
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+            /* Adjusted for fixed header */
+        }
 
-			import * as THREE from 'three';
+        .hero-section .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
 
-			import Stats from 'three/addons/libs/stats.module.js';
+        .hero-section .video-container iframe,
+        .hero-section .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+            pointer-events: none;
+        }
 
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+        .hero-section .hero-content {
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 20px;
+            animation: fadeIn 2s;
+        }
 
-			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-			import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+        .hero-section h1 {
+            color: var(--primary-color);
+            font-size: var(--header-font-size);
+            margin-bottom: 20px;
+        }
 
-			let mixer;
+        .hero-section p {
+            font-size: var(--body-font-size);
+            margin-bottom: 40px;
+        }
 
-			const clock = new THREE.Clock();
-			const container = document.getElementById( 'container' );
+        .hero-section .btn {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
 
-			const stats = new Stats();
-			container.appendChild( stats.dom );
+        .hero-section .btn:hover {
+            background-color: var(--button-hover-color);
+        }
 
-			const renderer = new THREE.WebGLRenderer( { antialias: true } );
-			renderer.setPixelRatio( window.devicePixelRatio );
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			container.appendChild( renderer.domElement );
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: var(--surface-color);
+        }
 
-			const pmremGenerator = new THREE.PMREMGenerator( renderer );
+        section .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-			const scene = new THREE.Scene();
-			scene.background = new THREE.Color( 0xbfe3dd );
-			scene.environment = pmremGenerator.fromScene( new RoomEnvironment( renderer ), 0.04 ).texture;
+        section h2 {
+            font-size: var(--subheader-font-size);
+            margin-bottom: 20px;
+            position: relative;
+            color: var(--primary-color);
+        }
 
-			const camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 100 );
-			camera.position.set( 5, 2, 8 );
+        section h2::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: var(--accent-color);
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+        }
 
-			const controls = new OrbitControls( camera, renderer.domElement );
-			controls.target.set( 0, 0.5, 0 );
-			controls.update();
-			controls.enablePan = false;
-			controls.enableDamping = true;
+        section p,
+        section ul {
+            font-size: var(--body-font-size);
+            margin-bottom: 20px;
+        }
 
-			const dracoLoader = new DRACOLoader();
-			dracoLoader.setDecoderPath( 'jsm/libs/draco/gltf/' );
+        .quote-section {
+            background: var(--accent-color);
+            color: var(--text-color);
+            padding: 60px 20px;
+        }
 
-			const loader = new GLTFLoader();
-			loader.setDRACOLoader( dracoLoader );
-			loader.load( 'models/gltf/LittlestTokyo.glb', function ( gltf ) {
+        .quote-section p {
+            font-size: var(--subheader-font-size);
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-				const model = gltf.scene;
-				model.position.set( 1, 1, 0 );
-				model.scale.set( 0.01, 0.01, 0.01 );
-				scene.add( model );
+        .quote-section p::before,
+        .quote-section p::after {
+            content: '"';
+        }
 
-				mixer = new THREE.AnimationMixer( model );
-				mixer.clipAction( gltf.animations[ 0 ] ).play();
+        .video-section {
+            background: var(--surface-color);
+            padding: 60px 20px;
+        }
 
-				animate();
+        .video-section iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: 10px;
+            border: none;
+        }
 
-			}, undefined, function ( e ) {
+        .story-timeline {
+            padding: 60px 20px;
+        }
 
-				console.error( e );
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-			} );
+        .timeline-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: var(--surface-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
 
-			window.onresize = function () {
+        .timeline-item .timeline-content {
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+        }
 
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
+        .timeline-item .timeline-date {
+            font-size: var(--body-font-size);
+            font-weight: bold;
+            margin: 0 20px;
+            color: var(--primary-color);
+        }
 
-				renderer.setSize( window.innerWidth, window.innerHeight );
+        .timeline-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
 
-			};
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            background-color: var(--surface-color);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
+        form input,
+        form textarea {
+            padding: 15px;
+            font-size: var(--body-font-size);
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
 
-			function animate() {
+        form button {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-				requestAnimationFrame( animate );
+        form button:hover {
+            background-color: var(--button-hover-color);
+        }
 
-				const delta = clock.getDelta();
+        footer {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 20px;
+            text-align: center;
+        }
 
-				mixer.update( delta );
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
 
-				controls.update();
+            to {
+                opacity: 1;
+            }
+        }
 
-				stats.update();
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
 
-				renderer.render( scene, camera );
+            section h2 {
+                font-size: 1.5rem;
+            }
 
-			}
+            .quote-section p {
+                font-size: 1.25rem;
+            }
 
+            .video-section iframe {
+                height: 300px;
+            }
 
-		</script>
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
 
-	</body>
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .timeline-item img {
+                margin-bottom: 20px;
+            }
+
+            form input,
+            form textarea {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <h1>🩷 Umair & Uzma</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#our-story">Our Story</a>
+            <a href="#video">Videos</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero-section" id="home">
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source
+                    src="C:\Users\jinn\Downloads\Video\A short animation about what love is [ Love is in small things- Collection ].mp4"
+                    type="video/mp4">
+
+            </video>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xdHx1YEsWwk?si=nsoBbWtyoeotmlKD"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Umair & Uzma</h1>
+            <p data-aos="fade-up" data-aos-delay="200">A love story that lasts forever.</p>
+            <a href="#our-story" class="btn" data-aos="fade-up" data-aos-delay="400">Our Story</a>
+        </div>
+    </section>
+
+    <section class="our-story" id="our-story">
+        <div class="container">
+            <h2 data-aos="fade-right">Our Story</h2>
+            <p data-aos="fade-right" data-aos-delay="200">Our journey began on a beautiful day in January 2020. From the
+                moment we met, we knew there was something special between us. Through the ups and downs, our love has
+                grown stronger and more profound with each passing day.</p>
+            <p data-aos="fade-right" data-aos-delay="400">Umair, with his kind heart and charming personality, swept
+                Uzma off her feet. Uzma, with her intelligence and grace, captivated Umair's heart. Together, they are
+                unstoppable, facing the world hand in hand.</p>
+
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 data-aos="fade-left">Gallery</h2>
+            <div class="gallery-grid" data-aos="fade-left" data-aos-delay="200">
+                <img src="https://source.unsplash.com/300x300/?love,romance" alt="Image 1">
+                <img src="https://source.unsplash.com/300x300/?couple,romance" alt="Image 2">
+                <img src="https://source.unsplash.com/300x300/?love,wedding" alt="Image 3">
+                <img src="https://source.unsplash.com/300x300/?romantic,date" alt="Image 4">
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <p>"Love is composed of a single soul inhabiting two bodies." - Aristotle</p>
+    </section>
+
+    <section class="video-section" id="video">
+        <div class="container">
+            <h2 data-aos="fade-up">Our Special Moments</h2>
+            <iframe data-aos="fade-up" data-aos-delay="200"
+                src="https://www.youtube.com/embed/xdHx1YEsWwk?si=nsoBbWtyoeotmlKD" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section class="story-timeline" id="timeline">
+        <div class="container">
+            <h2 data-aos="fade-up">Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <img src="https://source.unsplash.com/100x100/?love,romance" alt="Image 1">
+                    <div class="timeline-date">January 2022</div>
+                    <div class="timeline-content">
+                        <h3>First Meeting</h3>
+                        <p>We met for the first time and instantly felt a connection.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <img src="https://source.unsplash.com/100x100/?couple,romance" alt="Image 2">
+                    <div class="timeline-date">14 Feb 2021</div>
+                    <div class="timeline-content">
+                        <h3>Engagement</h3>
+                        <p>We haven't been engadged yet but soon.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+<footer>
+    <p>&copy; 2024 Umair & Uzma. All rights reserved.</p>
+</footer>
 
 </html>
