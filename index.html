@@ -1,3 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Delivery Distance & Fuel Cost</title>
+<style>
+  body { font-family: Arial; margin: 30px; }
+  input, button { padding: 10px; font-size: 1rem; }
+  #result { margin-top: 20px; font-size: 1.2rem; }
+</style>
+</head>
+<body>
+
+<h2>Pizza Delivery Mileage Calculator</h2>
+
+<label>Enter customer postcode:</label><br>
+<input type="text" id="postcode" placeholder="e.g. SG1 5DY"><br><br>
+
+<label>Fuel reimbursement rate (per mile):</label><br>
+<input type="number" id="rate" value="0.45" step="0.01"> GBP/mile<br><br>
+
+<button onclick="calculate()">Calculate</button>
+
+<div id="result"></div>
+
+<script>
+// ----------------------
+// CONFIGURATION
+// ----------------------
+
+// Fixed location of Gao Express Stevenage
+// (approx: 51.9023, -0.2026) – adjust if needed
+const SHOP_LAT = 51.9023;
+const SHOP_LON = -0.2026;
+
+// INSERT your OpenRouteService API KEY here:
+const ORS_API_KEY = "YOUR_API_KEY_HERE";
+
+// ----------------------
+// MAIN FUNCTION
+// ----------------------
+async function calculate() {
+    const postcode = document.getElementById("postcode").value;
+    const rate = parseFloat(document.getElementById("rate").value);
+    const resultDiv = document.getElementById("result");
+
+    if (!postcode) return alert("Please enter a postcode.");
+
+    resultDiv.innerHTML = "Calculating...";
+
+    try {
+        // 1. Convert postcode → coordinates
+        const geocodeUrl =
+          `https://api.openrouteservice.org/geocode/search?api_key=${ORS_API_KEY}&text=${encodeURIComponent(postcode)}`;
+        const geoResp = await fetch(geocodeUrl);
+        const geoData = await geoResp.json();
+
+        if (!geoData.features?.length) {
+            resultDiv.innerHTML = "Postcode not found.";
+            return;
+        }
+
+        const [lon, lat] = geoData.features[0].geometry.coordinates;
+
+        // 2. Request driving route
+        const routeUrl = "https://api.openrouteservice.org/v2/directions/driving-car/geojson";
+        const routeResp = await fetch(routeUrl, {
+            method: "POST",
+            headers: {
+                "Authorization": ORS_API_KEY,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                coordinates: [
+                    [SHOP_LON, SHOP_LAT],
+                    [lon, lat]
+                ]
+            })
+        });
+
+        const routeData = await routeResp.json();
+        const meters = routeData.features[0].properties.summary.distance;
+        const miles = meters / 1609.34;
+
+        const cost = miles * rate;
+
+        resultDiv.innerHTML =
+            `<strong>Distance:</strong> ${miles.toFixed(2)} miles<br>
+             <strong>Fuel reimbursement:</strong> £${cost.toFixed(2)}`;
+    }
+    catch (e) {
+        console.error(e);
+        resultDiv.innerHTML = "Error computing distance.";
+    }
+}
+</script>
+
+</body>
+</html>
+
+
+<!-- 
 <head>
   <meta charset="UTF-8">
   <title>Portfolio</title>
@@ -9,7 +111,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 
-<body> -->
+<body>
   Page content goes here
   <canvas id="bg"></canvas>
   <script type="module" src="https://jinumi.github.io/main.js"></script>
@@ -52,7 +154,7 @@
 
 </body>
 
-</html>
+</html>  -->
 
 <!-- <!DOCTYPE html>
 <html lang="en">
@@ -408,7 +510,7 @@
             <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/xdHx1YEsWwk?si=nsoBbWtyoeotmlKD"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="hero-content" data-aos="fade-up">
             <h1>Umair & Uzma</h1>
@@ -487,7 +589,7 @@
 </body>
 <footer>
     <p>&copy; 2024 Umair & Uzma. All rights reserved.</p>
-</footer>
+</footer>  -->
 
 </html>
  -->
